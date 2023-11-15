@@ -28,7 +28,7 @@ jobs:
           - os: ubuntu-20.04-aarch64
             cc: aarch64-linux-gnu-gcc
             cxx: aarch64-linux-gnu-g++
-            isCrossBuild: true
+            isCrossBuildArm64: true
           - os: macos-12
             cc: clang
             cxx: clang++
@@ -49,8 +49,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install jq tool
-        if: matrix.build.isCrossBuild
+      - name: Install arm64 cross build tools
+        if: matrix.build.isCrossBuildArm64
         run: |
           sudo apt-get update
           sudo apt-get install crossbuild-essential-arm64
