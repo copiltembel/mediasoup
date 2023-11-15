@@ -109,7 +109,7 @@ setup: meson-ninja
 # We try to call `--reconfigure` first as a workaround for this issue:
 # https://github.com/ninja-build/ninja/issues/1997
 ifeq ($(MEDIASOUP_BUILDTYPE),Release)
-	$(MESON) setup \
+	$(MESON) setup --cross-file arm64cross.txt \
 		--prefix $(INSTALL_DIR) \
 		--bindir '' \
 		--libdir '' \
@@ -120,7 +120,7 @@ ifeq ($(MEDIASOUP_BUILDTYPE),Release)
 		--reconfigure \
 		$(MESON_ARGS) \
 		$(BUILD_DIR) || \
-		$(MESON) setup \
+		$(MESON) setup --cross-file arm64cross.txt \
 			--prefix $(INSTALL_DIR) \
 			--bindir '' \
 			--libdir '' \
@@ -132,7 +132,7 @@ ifeq ($(MEDIASOUP_BUILDTYPE),Release)
 			$(BUILD_DIR)
 else
 ifeq ($(MEDIASOUP_BUILDTYPE),Debug)
-	$(MESON) setup \
+	$(MESON) setup --cross-file arm64cross.txt \
 		--prefix $(INSTALL_DIR) \
 		--bindir '' \
 		--libdir '' \
@@ -142,7 +142,7 @@ ifeq ($(MEDIASOUP_BUILDTYPE),Debug)
 		--reconfigure \
 		$(MESON_ARGS) \
 		$(BUILD_DIR) || \
-		$(MESON) setup \
+		$(MESON) setup --cross-file arm64cross.txt\
 			--prefix $(INSTALL_DIR) \
 			--bindir '' \
 			--libdir '' \
@@ -152,7 +152,7 @@ ifeq ($(MEDIASOUP_BUILDTYPE),Debug)
 			$(MESON_ARGS) \
 			$(BUILD_DIR)
 else
-	$(MESON) setup \
+	$(MESON) setup --cross-file arm64cross.txt \
 		--prefix $(INSTALL_DIR) \
 		--bindir '' \
 		--libdir '' \
@@ -163,7 +163,7 @@ else
 		--reconfigure \
 		$(MESON_ARGS) \
 		$(BUILD_DIR) || \
-		$(MESON) setup \
+		$(MESON) setup --cross-file arm64cross.txt \
 			--prefix $(INSTALL_DIR) \
 			--bindir '' \
 			--libdir '' \
